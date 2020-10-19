@@ -92,7 +92,11 @@ class SongReader {
             this.next();
         }
         if (songData.pitch >= 0) {
-            songData.pitch = this.octave * 12 + songData.pitch;
+            const newPitch = this.octave * 12 + songData.pitch + this.tuning;
+            if (newPitch < 0 || newPitch >= SongReader.octaveMax * 12) {
+                throw new SyntaxError('Pitch out of bound');
+            }
+            songData.pitch = newPitch;
         }
         if (this.data.length > 0 && songData.pitch === -2) {
             this.data[this.data.length - 1].length += songData.length;
@@ -130,6 +134,7 @@ class SongReader {
         if (newOctave < SongReader.octaveMin && newOctave > SongReader.octaveMax) {
             throw new SyntaxError('Octave goes out of bound');
         }
+        this.octave = newOctave;
         this.next();
     }
 
