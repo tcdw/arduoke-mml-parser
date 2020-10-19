@@ -4,7 +4,7 @@ function toCPPCode(data: SongData[], tempo: number, pin: number | string) {
     let code = `#include <NewTone.h>
 
 uint8_t TEMPO = ${tempo};
-int8_t accidental = 0;
+int8_t accidental = -12;
 int8_t PIN = ${pin};
 
 uint16_t PITCH[] = {

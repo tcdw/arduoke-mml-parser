@@ -160,6 +160,7 @@ class SongReader {
                 this.next();
                 continue;
             }
+            throw new SyntaxError(`Unknown character: ${this.char()}`);
         }
         return this.data;
     }
