@@ -1,1 +1,23 @@
-console.log('hi');
+import SongReader from './mml-parser';
+
+const song = new SongReader(`o4g+64a24r192b16>c16
+d32d+32e4..d8.c16r8<b16r16
+g2a8.>c8.<a16b48>c48d48
+e2g8.e16r8d8
+d4^16c16r16d64d+16.r16r64d8c8<a16..>c64
+d32d+32e4..d8.c16r8<b16r16
+g2a16..^96b32>c32<a8b32>c32<a16^192b48>c48d48
+e2g8.e16r8g16r16
+g48g+48a4^48g16r16a8r16g8e8d8
+a8g16e16r2e16r16d2^8
+g4a4
+e2^6r12c96d24r96c16r16e2^8.
+r8g8a8
+e8g16a16r2e16e24r48g16e16
+a+64b4...r64g4.r96a24r64b24r64
+>c4.<b16a16b16g16r16e16r16d16r16c32d32
+e4.d16c16g16e16r16d16r16c16<b16r16
+a2e8d16r16c16r16g16e1^16
+r4f64f+64g8..d+8d16r16c16r16f16d2.
+r8g+64a32.b16>c16`);
+console.log(song.parse());

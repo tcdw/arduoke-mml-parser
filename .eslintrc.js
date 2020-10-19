@@ -1,7 +1,7 @@
-export default {
+module.exports = {
     env: {
         browser: true,
-        es2021: true,
+        es2020: true,
         node: true,
     },
     extends: [
@@ -25,11 +25,11 @@ export default {
                 ts: 'never',
             },
         ],
-        'no-unused-vars': 'off',
         'no-plusplus': ['error', { allowForLoopAfterthoughts: true }],
         'prefer-destructuring': 'off',
         'no-continue': 'off',
         'no-constant-condition': 'off',
+        'lines-between-class-members': 'off',
     },
     settings: {
         'import/resolver': {
