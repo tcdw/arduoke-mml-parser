@@ -21,12 +21,12 @@ uint16_t PITCH[] = {
   3520, 3729, 3951, 4186, 4435, 4699, 4978,
 };
 
-const PROGMEM uint16_t MML[] = {`;
+const PROGMEM uint16_t MML[] = {\n`;
     data.forEach((e, i) => {
         if (e.pitch === -1) {
-            code += `  1, 0, 3, ${e.length}`
+            code += `  1, 0, 3, ${e.length}`;
         } else {
-            code += `  0, ${e.pitch}, 3, ${e.length}`
+            code += `  0, ${e.pitch}, 3, ${e.length}`;
         }
         if (i < data.length - 1) {
             code += ',\n';
@@ -38,10 +38,6 @@ uint8_t extendRest = 0;
 
 void setup() {
   Serial.begin(9600);
-  pinMode(PIN_UP, INPUT);
-  pinMode(PIN_DOWN, INPUT);
-  pinMode(5, OUTPUT);
-  pinMode(6, OUTPUT);
 }
 
 uint16_t i = 0;
@@ -49,11 +45,10 @@ uint16_t i = 0;
 void loop() {
   uint16_t cmd = pgm_read_byte_near(MML + (i * 2));
   uint16_t param = pgm_read_byte_near(MML + (i * 2 + 1));
-  // delay(100);
   Serial.print(cmd);
   Serial.print(", ");
   Serial.print(param);
-  Serial.print("\n");
+  Serial.print("\\n");
   switch (cmd) {
     case 0:
       // 发声
@@ -61,7 +56,7 @@ void loop() {
       NewTone(PIN, PITCH[param + accidental]);
       // Serial.print("Playing tone ");
       // Serial.print(i);
-      // Serial.print("!\n");
+      // Serial.print("!\\n");
       i++;
       break;
     case 1:
@@ -72,7 +67,7 @@ void loop() {
     case 3:
       // 等待
       extendRest = param;
-      delay2(param * TEMPO);
+      delay(param * TEMPO);
       i++;
       break;
     case 4:
