@@ -1,6 +1,6 @@
 import { SongData } from './interfaces/song-data';
 
-function toCPPCode(data: SongData[], tempo: number, pin: number | string) {
+function toCPPCode(data: SongData[], tempo: number | string, pin: number | string) {
     let code = `#include <NewTone.h>
 
 uint8_t TEMPO = ${tempo};
@@ -54,9 +54,6 @@ void loop() {
       // 发声
       noNewTone(PIN);
       NewTone(PIN, PITCH[param + accidental]);
-      // Serial.print("Playing tone ");
-      // Serial.print(i);
-      // Serial.print("!\\n");
       i++;
       break;
     case 1:
